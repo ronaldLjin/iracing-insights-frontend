@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/iracing-insights-frontend/static/css/main.7d3690b5.css",
-    "main.js": "/iracing-insights-frontend/static/js/main.7a810727.js",
+    "main.js": "/iracing-insights-frontend/static/js/main.d219741f.js",
     "static/js/787.c4e7f8f9.chunk.js": "/iracing-insights-frontend/static/js/787.c4e7f8f9.chunk.js",
     "static/media/hero.png": "/iracing-insights-frontend/static/media/hero.85cff0cb455dac8c4181.png",
     "index.html": "/iracing-insights-frontend/index.html",
     "main.7d3690b5.css.map": "/iracing-insights-frontend/static/css/main.7d3690b5.css.map",
-    "main.7a810727.js.map": "/iracing-insights-frontend/static/js/main.7a810727.js.map",
+    "main.d219741f.js.map": "/iracing-insights-frontend/static/js/main.d219741f.js.map",
     "787.c4e7f8f9.chunk.js.map": "/iracing-insights-frontend/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d3690b5.css",
-    "static/js/main.7a810727.js"
+    "static/js/main.d219741f.js"
   ]
 }
