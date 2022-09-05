@@ -1,0 +1,37 @@
+.nav-bar {
+    padding: 20px 10vw 20px 10vw;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: #1B3D6A;
+    color: white;
+}
+
+.nav-bar a {
+    margin-right: 3vw;
+}
+
+.nav-bar a:last-child {
+    margin-right: 0;
+}
+
+.container {
+    padding: 10vh 10vw 10vh 10vw;
+}
+
+.hero-image {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../assets/hero.png');
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 70vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.top-player-profile {
+    margin-right: 20px;
+}
+
+.top-player-profile:last-child {
+    margin-right: 0;
+}
