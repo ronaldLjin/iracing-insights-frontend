@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Profile from "./components/Profile"
 export default function Home() {
 
+    alert('test')
     const navigate = useNavigate()
     const categories = ['Road', 'Oval', 'Dirt_Road', 'Dirt_Oval']
     const [topPlayers, setTopPlayers] = useState([])
