@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/iracing-insights/static/css/main.6e0efb3c.css",
+    "main.js": "/iracing-insights/static/js/main.a7b8982a.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/iracing-insights/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/hero.png": "/iracing-insights/static/media/hero.85cff0cb455dac8c4181.png",
+    "index.html": "/iracing-insights/index.html",
+    "main.6e0efb3c.css.map": "/iracing-insights/static/css/main.6e0efb3c.css.map",
+    "main.a7b8982a.js.map": "/iracing-insights/static/js/main.a7b8982a.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/iracing-insights/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e0efb3c.css",
+    "static/js/main.a7b8982a.js"
+  ]
+}
