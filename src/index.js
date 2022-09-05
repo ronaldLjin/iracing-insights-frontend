@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
+import { HashRouter as Router } from 'react-router-dom'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import NavBar from './components/Navbar'
@@ -9,10 +10,12 @@ import theme from './theme'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <NavBar/>
+  <ChakraProvider theme={theme}>
+    <NavBar />
+    <Router>
       <App />
-    </ChakraProvider>
+    </Router>
+  </ChakraProvider>
   // </React.StrictMode>
 );
 
