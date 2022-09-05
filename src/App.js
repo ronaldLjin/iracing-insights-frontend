@@ -12,12 +12,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/percentile-calculator" element={<PercentileCalculator />} />
-        <Route path="/percentile-calculator" element={<PercentileCalculator />} />
-        <Route path="/driver-stats/:clientId" element={<DriverStats />} />
-        <Route path="/leaderboard/:pageNumber" element={<Leaderboard />} />
-        <Route path="/driver-search/:searchTerm" element={<DriverSearch />} />
+        <Route path="/iracing-insights-frontend/" element={<Home />} />
+        <Route path="/iracing-insights-frontend/percentile-calculator" element={<PercentileCalculator />} />
+        <Route path="/iracing-insights-frontend/percentile-calculator" element={<PercentileCalculator />} />
+        <Route path="/iracing-insights-frontend/driver-stats/:clientId" element={<DriverStats />} />
+        <Route path="/iracing-insights-frontend/leaderboard/:pageNumber" element={<Leaderboard />} />
+        <Route path="/iracing-insights-frontend/driver-search/:searchTerm" element={<DriverSearch />} />
       </Routes>
     </Router>
   );
