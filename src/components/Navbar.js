@@ -258,14 +258,14 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Home',
-    href: '/iracing-insights-frontend/',
+    href: '/',
   },
   {
     label: 'Percentile Calculator',
-    href: '/iracing-insights-frontend/percentile-calculator',
+    href: '/percentile-calculator',
   },
   {
     label: 'Leaderboard',
-    href: '/iracing-insights-frontend/leaderboard/1',
+    href: '/leaderboard/1',
   }
 ];

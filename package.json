@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ronaldljin.github.io/iracing-insights-frontend",
+  "homepage": "https://ronaldljin.github.io/",
   "proxy": "https://iracing-insights-backend.herokuapp.com/",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
