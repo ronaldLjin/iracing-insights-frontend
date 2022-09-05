@@ -85,7 +85,9 @@ export default function DriverStats() {
                                                 <Stat>
                                                     <StatLabel>iRating</StatLabel>
                                                     <StatNumber>{memberInfoStats?.irating}</StatNumber>
-                                                    <StatHelpText>{percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)}</StatHelpText>
+                                                    <StatHelpText>{
+                                                        memberInfoStats?.category_id === 1 ? "N/A" : percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)
+                                                    }</StatHelpText>
                                                 </Stat>
                                                 <Stat>
                                                     <StatLabel>ttRating</StatLabel>
