@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/iracing-insights-frontend/static/css/main.7d3690b5.css",
-    "main.js": "/iracing-insights-frontend/static/js/main.c9ac5ef5.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/iracing-insights-frontend/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/hero.png": "/iracing-insights-frontend/static/media/hero.85cff0cb455dac8c4181.png",
-    "index.html": "/iracing-insights-frontend/index.html",
-    "main.7d3690b5.css.map": "/iracing-insights-frontend/static/css/main.7d3690b5.css.map",
-    "main.c9ac5ef5.js.map": "/iracing-insights-frontend/static/js/main.c9ac5ef5.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/iracing-insights-frontend/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.css": "/static/css/main.4988243e.css",
+    "main.js": "/static/js/main.28e69873.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/hero.png": "/static/media/hero.85cff0cb455dac8c4181.png",
+    "index.html": "/index.html",
+    "main.4988243e.css.map": "/static/css/main.4988243e.css.map",
+    "main.28e69873.js.map": "/static/js/main.28e69873.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d3690b5.css",
-    "static/js/main.c9ac5ef5.js"
+    "static/css/main.4988243e.css",
+    "static/js/main.28e69873.js"
   ]
 }
