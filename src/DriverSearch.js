@@ -10,7 +10,7 @@ export default function DriverSearch() {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`/player_search?search_term=${params.searchTerm}`).then(
+        fetch(`https://iracing-insights-backend.herokuapp.com/player_search?search_term=${params.searchTerm}`).then(
             res => res.json()
         ).then(
             data => {
