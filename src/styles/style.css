@@ -26,12 +26,40 @@
     min-height: 70vh;
     background-size: cover;
     background-position: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
+
+.top-players {
+    margin: -5px;
+    width: 100%;
+}
 .top-player-profile {
-    margin-right: 20px;
+    margin: 5px;
 }
 
-.top-player-profile:last-child {
-    margin-right: 0;
+.player-search-form {
+    width: 40%;
+}
+
+.top-players-swiper {
+    width: min-content !important;
+}
+
+.top-players-box {
+    width: min-content;
+}
+@media (max-width: 1176px) {
+    .hero-image {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .player-search-form {
+        width: 100%;
+    }
+    .top-players-box {
+        width: 100%;
+    }
 }

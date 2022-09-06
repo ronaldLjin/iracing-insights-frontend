@@ -12,12 +12,17 @@ import {
     useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function Profile({ name, country, club, irating, wins, className, cust_id }) {
+export default function Profile({ name, country, club, irating, wins, className, cust_id, rank }) {
+    let avatarColors = {
+        '# 1': '#FFD700',
+        "# 2": "#C0C0C0",
+        '# 3': "#CD7F32"
+    }
     return (
-        <Link target="_blank" href={`/driver-stats/${cust_id}`}>
+        <Link href={`/driver-stats/${cust_id}`}>
             <Center>
                 <Box
-                    w={'200px'}
+                    w={'175px'}
                     bg={useColorModeValue('white', 'gray.800')}
                     boxShadow={'2xl'}
                     rounded={'md'}
@@ -35,16 +40,17 @@ export default function Profile({ name, country, club, irating, wins, className,
                     <Flex justify={'center'} mt={-12}>
                         <Avatar
                             size='lg'
-                            name={name}
+                            name={rank}
                             css={{
                                 border: '2px solid white',
+                                background: avatarColors[rank]
                             }}
                         />
                     </Flex>
 
-                    <Box p={6}>
+                    <Box p={6} >
                         <Stack spacing={0} align={'center'} mb={5}>
-                            <Heading fontSize={'md'} fontWeight={500} fontFamily={'body'}>
+                            <Heading textAlign="center" fontSize={'md'} fontWeight={500} fontFamily={'body'}>
                                 {name}
                             </Heading>
                             <Text color={'gray.500'}>{club}</Text>

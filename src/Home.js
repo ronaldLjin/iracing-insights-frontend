@@ -3,6 +3,12 @@ import { Form, Formik, Field } from "formik"
 import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import Profile from "./components/Profile"
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 export default function Home() {
     const navigate = useNavigate()
     const categories = ['Road', 'Oval', 'Dirt_Road', 'Dirt_Oval']
@@ -27,22 +33,35 @@ export default function Home() {
     }, [])
 
     return (
-        <Flex className="container hero-image" direction="row" justify="space-between" flexWrap="wrap-reverse" alignItems="center">
-            <Box>
-                <Heading textAlign={"center"}>Top {category.replace("_", " ")} Drivers</Heading>
-                <Flex width='fit-content' justifyContent='space-between' flexWrap="wrap" marginTop="20px">
-                    <Skeleton isLoaded={!loading} className="top-player-profile">
-                        <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} />
-                    </Skeleton >
-                    <Skeleton isLoaded={!loading} className="top-player-profile">
-                        <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} />
-                    </Skeleton>
-                    <Skeleton isLoaded={!loading} className="top-player-profile">
-                        <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} />
-                    </Skeleton>
-                </Flex>
+        <Flex className="container hero-image">
+            <Box className="top-players-box">
+                <Heading textAlign={"center"} size="md">Top {category.replace("_", " ")} Drivers</Heading>
+                {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
+                </Flex> */}
+                <Swiper
+                    // install Swiper modules
+                    slidesPerView={'auto'}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')}
+                >
+                    <SwiperSlide className="top-players-swiper">
+                        <Skeleton isLoaded={!loading} className="top-player-profile">
+                            <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} rank="# 1" />
+                        </Skeleton >
+                    </SwiperSlide>
+                    <SwiperSlide className="top-players-swiper">
+                        <Skeleton isLoaded={!loading} className="top-player-profile">
+                            <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} rank="# 2" />
+                        </Skeleton>
+                    </SwiperSlide>
+                    <SwiperSlide className="top-players-swiper">
+                        <Skeleton isLoaded={!loading} className="top-player-profile">
+                            <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} rank="# 3" />
+                        </Skeleton>
+                    </SwiperSlide>
+                </Swiper>
             </Box>
-            <Stack width='40%' spacing={"20px"}>
+            <Stack className="player-search-form" spacing={"20px"}>
                 <Box>
                     <Heading>iRacing Stats Tracker</Heading>
                     <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>
