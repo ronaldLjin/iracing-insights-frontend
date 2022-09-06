@@ -15,7 +15,7 @@ export default function Home() {
     useEffect(() => {
         setLoading(true)
         let c = categories[Math.floor(Math.random() * categories.length)]
-        fetch(`https://iracing-insights-backend.herokuapp.com/members/top_players?category=${c}`).then(
+        fetch(`/members/top_players?category=${c}`).then(
             res => res.json()
         ).then(
             data => {
