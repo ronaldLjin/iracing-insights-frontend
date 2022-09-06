@@ -24,7 +24,7 @@ export default function Leaderboard() {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`/members?category=Oval&page=${page}`).then(
+        fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Oval&page=${page}`).then(
             res => res.json()
         ).then(
             data => {

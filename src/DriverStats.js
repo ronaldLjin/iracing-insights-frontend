@@ -27,12 +27,12 @@ export default function DriverStats() {
     useEffect(() => {
         setLoading(true)
         Promise.all([
-            fetch(`/member_profile?cust_id=${params.clientId}`).then(value => value.json()),
-            fetch(`/stats_member_career?cust_id=${params.clientId}`).then(value => value.json()),
-            fetch(`/members?category=Oval&column=IRATING`).then(value => value.json()),
-            fetch(`/members?category=Road&column=IRATING`).then(value => value.json()),
-            fetch(`/members?category=Dirt_Oval&column=IRATING`).then(value => value.json()),
-            fetch(`/members?category=Dirt_Road&column=IRATING`).then(value => value.json())
+            fetch(`https://iracing-insights-backend.herokuapp.com/member_profile?cust_id=${params.clientId}`).then(value => value.json()),
+            fetch(`https://iracing-insights-backend.herokuapp.com/stats_member_career?cust_id=${params.clientId}`).then(value => value.json()),
+            fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Oval&column=IRATING`).then(value => value.json()),
+            fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Road&column=IRATING`).then(value => value.json()),
+            fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Dirt_Oval&column=IRATING`).then(value => value.json()),
+            fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Dirt_Road&column=IRATING`).then(value => value.json())
           ]).then(allResponses => {
             setMemberProfile(allResponses[0])
             setData(allResponses[1])

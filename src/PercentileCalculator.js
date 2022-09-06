@@ -42,7 +42,7 @@ export default function Distribution() {
 
     const loadDistribution = (category, statistic) => {
         setLoading(true)
-        fetch(`/members?category=${category}&column=${statistic}`).then(
+        fetch(`https://iracing-insights-backend.herokuapp.com/members?category=${category}&column=${statistic}`).then(
             res => res.json()
         ).then(
             data => {
