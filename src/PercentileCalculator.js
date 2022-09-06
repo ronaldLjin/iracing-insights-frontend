@@ -8,10 +8,9 @@ import Statistics from './components/Statistics';
 export default function Distribution() {
     const percentile = (arr, num) => {
         let totalPlayers = arr.length
-        let betterThan = arr.filter((item) => item <= num).length
+        let betterThan = arr.filter((item) => item < num).length
         let rank = totalPlayers - betterThan
         let percentile = Math.round(betterThan / totalPlayers * 100000) / 1000
-        betterThan = `${betterThan} players (not including Rookie class)`
         rank = `${rank} out of ${totalPlayers}`
         return { percentile, rank, betterThan }
     }
@@ -133,10 +132,20 @@ export default function Distribution() {
                         font: {
                             color: 'white',
                             family: theme.fonts.body
-                        }
+                        },
+                        xaxis: {
+                            title: {
+                              text: statistic,
+                            },
+                          },
+                          yaxis: {
+                            title: {
+                              text: 'Frequency',
+                            }
+                          }
                     }}
                     useResizeHandler={true}
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100%", height: "100%"}}
                 />
             </Skeleton>
             <Skeleton isLoaded={!loading}>

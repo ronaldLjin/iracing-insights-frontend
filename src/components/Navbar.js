@@ -266,6 +266,6 @@ const NAV_ITEMS = [
   },
   {
     label: 'Leaderboard',
-    href: '/leaderboard/1',
+    href: '/leaderboard/Road/1',
   }
 ];

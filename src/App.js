@@ -14,7 +14,7 @@ function App() {
         <Route path="/" exact element={<Home />} />
         <Route path="/percentile-calculator" exact element={<PercentileCalculator />} />
         <Route path="/driver-stats/:clientId" exact element={<DriverStats />} />
-        <Route path="/leaderboard/:pageNumber" exact element={<Leaderboard />} />
+        <Route path="/leaderboard/:category/:pageNumber" exact element={<Leaderboard />} />
         <Route path="/driver-search/:searchTerm" exact element={<DriverSearch />} />
     </Routes>
   );

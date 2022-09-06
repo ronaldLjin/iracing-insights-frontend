@@ -6,10 +6,16 @@ import License from "./components/License";
 export default function DriverStats() {
     const percentile = (arr, num) => {
         let totalPlayers = arr.length
-        let betterThan = arr.filter((item) => item <= num).length
-        let percentile = Math.round(betterThan / totalPlayers * 100)
-        if (100-percentile <= 50) {
-            return `Top ${100-percentile}%`
+        let betterThan = arr.filter((item) => item < num).length
+        let rank = totalPlayers - betterThan
+        let percentile = Math.round(betterThan / totalPlayers * 1000)/10
+        let inversePercentile = Math.round((100-percentile) *10)/10
+        if (inversePercentile <= 50) {
+            if (inversePercentile === 0) {
+                return `#${rank}/${totalPlayers}`
+            } else {
+                return `Top ${inversePercentile}%`
+            }
         } else {
             return `Bottom ${percentile}%`
         }
@@ -86,7 +92,7 @@ export default function DriverStats() {
                                                     <StatLabel>iRating</StatLabel>
                                                     <StatNumber>{memberInfoStats?.irating}</StatNumber>
                                                     <StatHelpText>{
-                                                        memberInfoStats?.category_id === 1 ? "N/A" : percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)
+                                                        memberInfoStats?.group_name === "Rookie" ? "N/A" : percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)
                                                     }</StatHelpText>
                                                 </Stat>
                                                 <Stat>

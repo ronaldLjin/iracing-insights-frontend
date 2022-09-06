@@ -14,17 +14,23 @@ import {
     Skeleton,
     Image,
     Tag,
-    Link
+    Link,
+    Select,
+    Box,
+    Flex,
+    Button,
+    Text
 } from "@chakra-ui/react";
 export default function Leaderboard() {
     const params = useParams();
-    const page = params.pageNumber
+    const page = parseInt(params.pageNumber)
+    const category = params.category
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([])
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Oval&page=${page}`).then(
+        fetch(`https://iracing-insights-backend.herokuapp.com/members?category=${category}&page=${page}`).then(
             res => res.json()
         ).then(
             data => {
@@ -38,76 +44,93 @@ export default function Leaderboard() {
     return (
         <Skeleton isLoaded={!loading}>
             <Stack py="10vh" px="10vw" spacing="20px">
-                <Table variant='simple'>
-                    <Thead>
-                        <Tr>
-                            {
-                                !loading && Object.keys(data.drivers[0]).map((key) => {
-                                    if (key === "CUSTID") {
-                                        return
-                                    } else {
-                                        return <Th>{key}</Th>
-                                    }
-                                })
-                            }
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {
-                            data.drivers?.map(
-                                (driver) => {
-
-                                    return (
-                                        <Tr>
-                                            {Object.keys(driver).map(function (key) {
-                                                if (key === "RANK") {
-                                                    return (
-                                                        <Td>{driver[key] + 1}</Td>
-                                                    )
-                                                } else if (key === "DRIVER") {
-                                                    return (
-                                                        <Td><Link target="_blank" href={`/driver-stats/${driver["CUSTID"]}`}>{driver[key]}</Link></Td>
-                                                    )
-                                                } else if (key === "LOCATION") {
-                                                    return (
-                                                        <Td>
-                                                            <Image src={`https://countryflagsapi.com/svg/${driver[key]}`} w="30px" />
-                                                        </Td>
-                                                    )
-                                                } else if (key === "CLASS") {
-                                                    let color = ""
-                                                    if (driver[key][0] === "R") {
-                                                        color = "red.400"
-                                                    } else if (driver[key][0] === "D") {
-                                                        color = "orange.400"
-                                                    } else if (driver[key][0] === "C") {
-                                                        color = "yellow.400"
-                                                    } else if (driver[key][0] === "B") {
-                                                        color = "green.400"
-                                                    } else if (driver[key][0] === "A") {
-                                                        color = "blue.400"
-                                                    } else if (driver[key][0] === "P") {
-                                                        color = "blackAlpha.600"
-                                                    }
-                                                    return (
-                                                        <Td><Tag bg={color}>{driver[key]}</Tag></Td>
-                                                    )
-                                                } else if (key === "CUSTID") {
-                                                    return
-                                                } else {
-                                                    return (
-                                                        <Td>{driver[key]}</Td>
-                                                    )
-                                                }
-                                            })
-                                            }
-                                        </Tr>
-                                    )
+                <Select value={category} onChange={(event) => { window.location.href = `/leaderboard/${event.currentTarget.value}/1` }}>
+                    <option value='Road'>Road</option>
+                    <option value='Oval'>Oval</option>
+                    <option value='Dirt_Road'>Dirt Road</option>
+                    <option value='Dirt_Oval'>Dirt Oval</option>
+                </Select>
+                <Box overflow="auto">
+                    <Table variant='simple'>
+                        <Thead>
+                            <Tr>
+                                {
+                                    !loading && Object.keys(data.drivers[0]).map((key) => {
+                                        if (key === "CUSTID") {
+                                            return
+                                        } else {
+                                            return <Th>{key}</Th>
+                                        }
+                                    })
                                 }
-                            )
-                        }
-                    </Tbody>
-                </Table>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            {
+                                data.drivers?.map(
+                                    (driver) => {
+
+                                        return (
+                                            <Tr>
+                                                {Object.keys(driver).map(function (key) {
+                                                    if (key === "RANK") {
+                                                        return (
+                                                            <Td>{driver[key] + 1}</Td>
+                                                        )
+                                                    } else if (key === "DRIVER") {
+                                                        return (
+                                                            <Td><Link target="_blank" href={`/driver-stats/${driver["CUSTID"]}`}>{driver[key]}</Link></Td>
+                                                        )
+                                                    } else if (key === "LOCATION") {
+                                                        return (
+                                                            <Td>
+                                                                <Image src={`https://countryflagsapi.com/svg/${driver[key]}`} w="30px" />
+                                                            </Td>
+                                                        )
+                                                    } else if (key === "CLASS") {
+                                                        let color = ""
+                                                        if (driver[key][0] === "R") {
+                                                            color = "red.400"
+                                                        } else if (driver[key][0] === "D") {
+                                                            color = "orange.400"
+                                                        } else if (driver[key][0] === "C") {
+                                                            color = "yellow.400"
+                                                        } else if (driver[key][0] === "B") {
+                                                            color = "green.400"
+                                                        } else if (driver[key][0] === "A") {
+                                                            color = "blue.400"
+                                                        } else if (driver[key][0] === "P") {
+                                                            color = "blackAlpha.600"
+                                                        }
+                                                        return (
+                                                            <Td><Tag bg={color}>{driver[key]}</Tag></Td>
+                                                        )
+                                                    } else if (key === "CUSTID") {
+                                                        return
+                                                    } else {
+                                                        return (
+                                                            <Td>{driver[key]}</Td>
+                                                        )
+                                                    }
+                                                })
+                                                }
+                                            </Tr>
+                                        )
+                                    }
+                                )
+                            }
+                        </Tbody>
+                    </Table>
+                </Box>
+                <Flex justify="space-between">
+                    {
+                        page > 1 && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page - 1}` }}>Previous</Button>
+                    }
+                    <Text>Page {page} of {data.page_count}</Text>
+                    {
+                        page < data.page_count && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page + 1}` }}>Next</Button>
+                    }
+                </Flex>
             </Stack>
         </Skeleton>
     )
