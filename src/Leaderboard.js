@@ -42,15 +42,15 @@ export default function Leaderboard() {
 
     console.log(data)
     return (
-        <Skeleton isLoaded={!loading}>
-            <Stack py="10vh" px="10vw" spacing="20px">
-                <Select value={category} onChange={(event) => { window.location.href = `/leaderboard/${event.currentTarget.value}/1` }}>
-                    <option value='Road'>Road</option>
-                    <option value='Oval'>Oval</option>
-                    <option value='Dirt_Road'>Dirt Road</option>
-                    <option value='Dirt_Oval'>Dirt Oval</option>
-                </Select>
-                <Box overflow="auto">
+        <Stack py="10vh" px="10vw" spacing="20px">
+            <Select value={category} onChange={(event) => { window.location.href = `/leaderboard/${event.currentTarget.value}/1` }}>
+                <option value='Road'>Road</option>
+                <option value='Oval'>Oval</option>
+                <option value='Dirt_Road'>Dirt Road</option>
+                <option value='Dirt_Oval'>Dirt Oval</option>
+            </Select>
+            <Skeleton isLoaded={!loading}>
+                <Box overflow="auto" minW = "100%" minH = "100vh">
                     <Table variant='simple'>
                         <Thead>
                             <Tr>
@@ -103,7 +103,7 @@ export default function Leaderboard() {
                                                             color = "blackAlpha.600"
                                                         }
                                                         return (
-                                                            <Td><Tag bg={color}>{driver[key]}</Tag></Td>
+                                                            <Td whiteSpace="nowrap"><Tag bg={color}>{driver[key]}</Tag></Td>
                                                         )
                                                     } else if (key === "CUSTID") {
                                                         return
@@ -122,16 +122,16 @@ export default function Leaderboard() {
                         </Tbody>
                     </Table>
                 </Box>
-                <Flex justify="space-between">
-                    {
-                        page > 1 && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page - 1}` }}>Previous</Button>
-                    }
-                    <Text>Page {page} of {data.page_count}</Text>
-                    {
-                        page < data.page_count && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page + 1}` }}>Next</Button>
-                    }
-                </Flex>
-            </Stack>
-        </Skeleton>
+            </Skeleton>
+            <Flex justify="space-between">
+                {
+                    page > 1 && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page - 1}` }}>Previous</Button>
+                }
+                <Text>Page {page} of {data.page_count}</Text>
+                {
+                    page < data.page_count && <Button onClick={(event) => { window.location.href = `/leaderboard/${category}/${page + 1}` }}>Next</Button>
+                }
+            </Flex>
+        </Stack>
     )
 }

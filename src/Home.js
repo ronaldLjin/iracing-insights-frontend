@@ -35,7 +35,6 @@ export default function Home() {
     return (
         <Flex className="container hero-image">
             <Box className="top-players-box">
-                <Heading textAlign={"center"} size="md">Top {category.replace("_", " ")} Drivers</Heading>
                 {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
                 </Flex> */}
                 <Swiper
@@ -86,12 +85,12 @@ export default function Home() {
                         <Stack spacing={"20px"}>
                             <FormControl>
                                 <FormLabel htmlFor="driver_name">Driver Name</FormLabel>
-                                <Field id="driver_name" name="driver_name" variant='filled' placeholder='e.x. John Doe' as={Input}>
+                                <Field id="driver_name" name="driver_name" _placeholder={{ color: 'blackAlpha.500' }} placeholder='e.x. John Doe' as={Input}>
                                 </Field>
                             </FormControl>
                             <FormControl>
                                 <FormLabel htmlFor="cust_id">Customer ID</FormLabel>
-                                <Field id="cust_id" name="cust_id" as={Input} variant='filled' placeholder='e.x. 00000'>
+                                <Field type="number" id="cust_id" name="cust_id" _placeholder={{ color: 'blackAlpha.500' }} as={Input} placeholder='e.x. 00000'>
                                 </Field>
                             </FormControl>
                             <Button type='submit' colorScheme="red">

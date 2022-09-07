@@ -8,8 +8,8 @@ export default function DriverStats() {
         let totalPlayers = arr.length
         let betterThan = arr.filter((item) => item < num).length
         let rank = totalPlayers - betterThan
-        let percentile = Math.round(betterThan / totalPlayers * 1000)/10
-        let inversePercentile = Math.round((100-percentile) *10)/10
+        let percentile = Math.round(betterThan / totalPlayers * 1000) / 10
+        let inversePercentile = Math.round((100 - percentile) * 10) / 10
         if (inversePercentile <= 50) {
             if (inversePercentile === 0) {
                 return `#${rank}/${totalPlayers}`
@@ -39,12 +39,12 @@ export default function DriverStats() {
             fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Road&column=IRATING`).then(value => value.json()),
             fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Dirt_Oval&column=IRATING`).then(value => value.json()),
             fetch(`https://iracing-insights-backend.herokuapp.com/members?category=Dirt_Road&column=IRATING`).then(value => value.json())
-          ]).then(allResponses => {
+        ]).then(allResponses => {
             setMemberProfile(allResponses[0])
             setData(allResponses[1])
-            setAllIratings({"oval": allResponses[2], "road": allResponses[3], "dirt_oval": allResponses[4], "dirt_road": allResponses[5]})
+            setAllIratings({ "oval": allResponses[2], "road": allResponses[3], "dirt_oval": allResponses[4], "dirt_road": allResponses[5] })
             setLoading(false)
-          })
+        })
     }, [])
 
     const labelNames = {
@@ -66,8 +66,8 @@ export default function DriverStats() {
 
 
     return (
-        <Skeleton isLoaded={!loading}>
-            <Stack py="10vh" px="10vw" spacing="20px">
+        <Stack py="10vh" px="10vw" spacing="20px">
+            <Skeleton isLoaded={!loading} minW="100%" minH="100vh">
                 <Stack spacing="20px">
                     <Heading as="h1">
                         {memberProfile.member_info?.display_name}
@@ -129,7 +129,7 @@ export default function DriverStats() {
                         })}
                     </TabPanels>
                 </Tabs>
-            </Stack>
-        </Skeleton>
+            </Skeleton>
+        </Stack>
     )
 }

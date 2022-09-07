@@ -49,6 +49,7 @@ export default function Distribution() {
                 // const parsedData = csv?.data;
                 setDateAndTime(new Date().toLocaleString())
                 setData(data)
+                setPercentileDisplay({ "percentile": `--`, "rank": `--`, "betterThan": `--` })
                 setLoading(false)
             }
         )
