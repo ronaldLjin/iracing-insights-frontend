@@ -48,7 +48,10 @@ import {
     return (
       <Box
         bg={useColorModeValue('gray.50', 'gray.900')}
-        color={useColorModeValue('gray.700', 'gray.200')}>
+        color={useColorModeValue('gray.700', 'gray.200')}
+        py={'20px'}
+        px={'10vw'}
+        >
         <Container
           as={Stack}
           maxW={'6xl'}
