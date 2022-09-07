@@ -40,14 +40,14 @@ export default function NavBar() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg={useColorModeValue('white', 'gray.900')}
+        color={useColorModeValue('gray.800', 'white')}
         minH={'60px'}
         py={'20px'}
         px={'10vw'}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.200')}
+        borderColor={useColorModeValue('gray.200', 'gray.700')}
         align={'center'}>
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -66,8 +66,8 @@ export default function NavBar() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            iRacing Stats Tracker
+            color={useColorModeValue('gray.800', 'white')} fontWeight="bold">
+            iRacing Insights
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

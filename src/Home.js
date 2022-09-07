@@ -34,7 +34,7 @@ export default function Home() {
 
     return (
         <Flex className="container hero-image">
-            <Box className="top-players-box">
+            <Box className="top-players-box" margin={"10px 0 0 10px"}>
                 {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
                 </Flex> */}
                 <Swiper
@@ -60,7 +60,7 @@ export default function Home() {
                     </SwiperSlide>
                 </Swiper>
             </Box>
-            <Stack className="player-search-form" spacing={"20px"}>
+            <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"}>
                 <Box>
                     <Heading>iRacing Stats Tracker</Heading>
                     <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>

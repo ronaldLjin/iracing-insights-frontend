@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import NavBar from './components/Navbar'
 import theme from './theme'
+import SmallCentered from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
     <Router>
       <App />
     </Router>
+    <SmallCentered/>
   </ChakraProvider>
   // </React.StrictMode>
 );
