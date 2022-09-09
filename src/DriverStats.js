@@ -84,9 +84,9 @@ export default function DriverStats() {
                         {data.stats?.map((tab, index) => {
                             let memberInfoStats = memberProfile.member_info?.licenses.find(obj => { return obj.category_id === tab.category_id })
                             return (
-                                <TabPanel p={4} key={index}>
-                                    <Flex wrap="wrap" justify="space-between">
-                                        <Stack spacing="20px" bg="gray.700" borderRadius="15px" padding="15px" margin="10px">
+                                <TabPanel p={"20px 0 20px 0"} key={index}>
+                                    <Flex wrap="wrap" justify="space-between" margin="-10px">
+                                        <Stack spacing="20px"  borderRadius="15px" padding="15px" margin="10px">
                                             <StatGroup>
                                                 <Stat>
                                                     <StatLabel>iRating</StatLabel>
@@ -105,7 +105,7 @@ export default function DriverStats() {
                                             </Stack>
                                         </Stack>
 
-                                        <Flex flex="1" bg="gray.700" borderRadius="15px" padding="15px" margin="10px" flexWrap="wrap" justifyContent="flex-start">
+                                        <Flex flex="1" bg="gray.100" borderRadius="15px" padding="15px" margin="10px" flexWrap="wrap" justifyContent="flex-start">
                                             {
                                                 Object.keys(tab).map(
                                                     (key) => {
@@ -113,7 +113,7 @@ export default function DriverStats() {
                                                             return
                                                         } else {
                                                             return (
-                                                                <Stat padding={"20px"} w="200px" flex="none">
+                                                                <Stat padding={"20px"} className="driver-stat" flex="none">
                                                                     <StatLabel>{labelNames[key]}</StatLabel>
                                                                     <StatNumber>{tab[key]}</StatNumber>
                                                                 </Stat>

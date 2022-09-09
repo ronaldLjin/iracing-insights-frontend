@@ -62,8 +62,8 @@ export default function Home() {
             </Box>
             <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"}>
                 <Box>
-                    <Heading>iRacing Stats Tracker</Heading>
-                    <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>
+                    <Heading color="white">iRacing Insights</Heading>
+                    <Text fontSize="xl" color="white">1. Input a name OR customer ID, 2. Click submit</Text>
                 </Box>
                 <Formik
                     initialValues={{
@@ -84,12 +84,12 @@ export default function Home() {
                     <Form>
                         <Stack spacing={"20px"}>
                             <FormControl>
-                                <FormLabel htmlFor="driver_name">Driver Name</FormLabel>
+                                <FormLabel htmlFor="driver_name" color="white">Driver Name</FormLabel>
                                 <Field id="driver_name" name="driver_name" _placeholder={{ color: 'blackAlpha.500' }} placeholder='e.x. John Doe' as={Input}>
                                 </Field>
                             </FormControl>
                             <FormControl>
-                                <FormLabel htmlFor="cust_id">Customer ID</FormLabel>
+                                <FormLabel htmlFor="cust_id" color="white">Customer ID</FormLabel>
                                 <Field type="number" id="cust_id" name="cust_id" _placeholder={{ color: 'blackAlpha.500' }} as={Input} placeholder='e.x. 00000'>
                                 </Field>
                             </FormControl>

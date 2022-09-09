@@ -20,14 +20,14 @@ export default function Profile({ name, country, club, irating, wins, className,
     }
     return (
         <Link href={`/driver-stats/${cust_id}`}>
-            <Center>
+            <Center >
                 <Box
                     w={'175px'}
-                    bg={useColorModeValue('white', 'gray.800')}
+                    bg={useColorModeValue('gray.100', 'gray.800')}
                     boxShadow={'2xl'}
                     rounded={'md'}
                     overflow={'hidden'}
-                    h={'300px'}
+                    h={'300px'} 
                 >
                     <Image
                         h={'120px'}

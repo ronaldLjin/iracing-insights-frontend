@@ -16,10 +16,10 @@ export default function License({ license, sr }) {
         color = "blue.400"
         license = "A"
     } else if (license === "Pro/WC") {
-        color = "blackAlpha.600"
+        color = "blackAlpha.800"
     }
     return (
-        <Flex backgroundColor={color} padding={6} borderRadius={"15px"} direction="column" alignItems="center" w="160px" h="175px" justifyContent="space-between">
+        <Flex backgroundColor={color} padding={6} borderRadius={"15px"} direction="column" alignItems="center" w="160px" h="175px" justifyContent="space-between" color="white">
             <Text size="lg">CLASS</Text>
             <Heading as="h3" size="lg">{license}</Heading>
             <Divider borderBottomWidth={"2px"}/>

@@ -49,7 +49,7 @@ export default function Leaderboard() {
                 <option value='Dirt_Road'>Dirt Road</option>
                 <option value='Dirt_Oval'>Dirt Oval</option>
             </Select>
-            <Skeleton isLoaded={!loading}>
+            <Skeleton isLoaded={!loading} className="overflow-scroll-gradient">
                 <Box overflow="auto" minW = "100%" minH = "100vh">
                     <Table variant='simple'>
                         <Thead>
@@ -100,10 +100,10 @@ export default function Leaderboard() {
                                                         } else if (driver[key][0] === "A") {
                                                             color = "blue.400"
                                                         } else if (driver[key][0] === "P") {
-                                                            color = "blackAlpha.600"
+                                                            color = "blackAlpha.800"
                                                         }
                                                         return (
-                                                            <Td whiteSpace="nowrap"><Tag bg={color}>{driver[key]}</Tag></Td>
+                                                            <Td whiteSpace="nowrap"><Tag bg={color} color="white">{driver[key]}</Tag></Td>
                                                         )
                                                     } else if (key === "CUSTID") {
                                                         return
