@@ -76,8 +76,8 @@ export default function Distribution() {
                 }}
             >
                 <Form>
-                    <Flex direction="row" alignItems="flex-end" flexWrap="wrap">
-                        <Box paddingRight="20px">
+                    <Flex direction="row" alignItems="flex-end" flexWrap="wrap" margin="-10px">
+                        <Box margin={"10px"}>
                             <FormControl>
                                 <FormLabel>Category</FormLabel>
 
@@ -90,7 +90,7 @@ export default function Distribution() {
 
                             </FormControl>
                         </Box>
-                        <Box paddingRight="20px">
+                        <Box margin={"10px"}>
                             <FormControl>
                                 <FormLabel>Statistic</FormLabel>
                                 <Field id="statistic" name="statistic" as={Select}>
@@ -111,7 +111,7 @@ export default function Distribution() {
                                 </Field>
                             </FormControl>
                         </Box>
-                        <Button type='submit'>
+                        <Button margin={"10px"} type='submit'>
                             Submit
                         </Button>
                     </Flex>
