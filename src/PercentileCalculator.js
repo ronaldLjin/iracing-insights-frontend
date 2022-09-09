@@ -133,7 +133,6 @@ export default function Distribution() {
                         paper_bgcolor: 'rgba(0,0,0,0)',
                         plot_bgcolor: 'rgba(0,0,0,0)',
                         font: {
-                            color: 'white',
                             family: theme.fonts.body
                         },
                         xaxis: {
@@ -154,7 +153,7 @@ export default function Distribution() {
             </Skeleton>
             <Skeleton isLoaded={!loading}>
 
-                <Stack bg="gray.700" borderRadius="15px" padding="15px" spacing="20px">
+                <Stack bg="gray.100" borderRadius="15px" padding="15px" spacing="20px">
                     <Heading as="h2" size='lg'>
                         Quick Stats
                     </Heading>
@@ -190,7 +189,7 @@ export default function Distribution() {
             </Skeleton>
 
             <Skeleton isLoaded={!loading}>
-                <Stack bg="gray.700" borderRadius="15px" padding="15px" spacing="20px">
+                <Stack bg="gray.100" borderRadius="15px" padding="15px" spacing="20px">
                     <Heading as="h2" size='lg'>
                         Percentile Calculator
                     </Heading>
