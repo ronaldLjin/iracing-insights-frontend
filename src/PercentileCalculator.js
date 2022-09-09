@@ -23,6 +23,26 @@ export default function Distribution() {
 
     const average = arr => Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
 
+    const labelNames = {
+        "Starts": "Starts",
+        "Wins": "Wins",
+        "Avg_start_pos": "Avg. Start Position",
+        "Avg_finish_pos": "Avg. Finish Position",
+        "Laps": "Laps",
+        "Lapslead": "Laps Lead",
+        "Avg_inc": "Avg. Incidents",
+        "Avg_points": "Avg. Points",
+        "Win_percentage": "Win Percentage",
+        "Top5_percentage": "Top 5 Percentage",
+        "Laps_led_percentage": "Laps Led Percentage",
+        "Tot_clubpoints": "Total Club points",
+        'iRating': 'iRating',
+        'ttrating': 'ttRating',
+        'Champpoints': 'Championship Points',
+        'class': 'Safety Rating',
+        'Top25pcnt': 'Top 25%'
+    }
+
     const [data, setData] = useState([])
     const [date, setDate] = useState('')
     const [userInput, setUserInput] = useState()
@@ -128,7 +148,7 @@ export default function Distribution() {
                         }
                     ]}
                     layout={{
-                        title: `iRacing ${statistic} statistics for ${category} drivers on ${date}`,
+                        title: `iRacing ${labelNames[statistic]} statistics for ${category} drivers on ${date}`,
                         bargap: 0.5,
                         paper_bgcolor: 'rgba(0,0,0,0)',
                         plot_bgcolor: 'rgba(0,0,0,0)',
@@ -146,7 +166,7 @@ export default function Distribution() {
                             }
                         }
                     }}
-                    config={{displaylogo: false}}
+                    config={{ displaylogo: false }}
                     useResizeHandler={true}
                     style={{ width: "100%", height: "100%" }}
                 />
@@ -195,10 +215,10 @@ export default function Distribution() {
                     </Heading>
                     <FormControl>
                         <FormLabel>
-                            {statistic}
+                            {labelNames[statistic]}
                         </FormLabel>
                         <NumberInput min={0}>
-                            <NumberInputField placeholder={`Input your ${statistic}`} onChange={event => handleUserInput(event.currentTarget.value)} />
+                            <NumberInputField placeholder={`Input your ${labelNames[statistic]}`} onChange={event => handleUserInput(event.currentTarget.value)} />
                         </NumberInput>
                     </FormControl>
                     <Text >Percentile: {percentileDisplay['percentile']}</Text>
