@@ -15,7 +15,7 @@ export default function License({ license, sr }) {
     } else if (license === "Class A") {
         color = "blue.400"
         license = "A"
-    } else if (license === "Pro/WC") {
+    } else if (license === "Pro/WC" || license === "Pro") {
         color = "blackAlpha.800"
     }
     return (
