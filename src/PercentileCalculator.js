@@ -147,6 +147,7 @@ export default function Distribution() {
                             }
                         }
                     }}
+                    config={{displaylogo: false}}
                     useResizeHandler={true}
                     style={{ width: "100%", height: "100%" }}
                 />
