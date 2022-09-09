@@ -61,6 +61,8 @@ export default function Distribution() {
 
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
+            <Text>Data is updated automatically approximately every hour.</Text>
+            <Text as="sub">Last updated: {date}</Text>
             <Formik
                 initialValues={{
                     category: 'Road',
@@ -136,17 +138,17 @@ export default function Distribution() {
                         },
                         xaxis: {
                             title: {
-                              text: statistic,
+                                text: statistic,
                             },
-                          },
-                          yaxis: {
+                        },
+                        yaxis: {
                             title: {
-                              text: 'Frequency',
+                                text: 'Frequency',
                             }
-                          }
+                        }
                     }}
                     useResizeHandler={true}
-                    style={{ width: "100%", height: "100%"}}
+                    style={{ width: "100%", height: "100%" }}
                 />
             </Skeleton>
             <Skeleton isLoaded={!loading}>
@@ -158,7 +160,7 @@ export default function Distribution() {
                     <Statistics stats={
                         {
                             Mean: average(data),
-                            Median: median(data) ,
+                            Median: median(data),
                             Max: data[0]
                         }
                     }
