@@ -42,7 +42,7 @@ export default function DriverStats() {
         ]).then(allResponses => {
             setMemberProfile(allResponses[0])
             setData(allResponses[1])
-            setAllIratings({ "oval": allResponses[2], "road": allResponses[3], "dirt_oval": allResponses[4], "dirt_road": allResponses[5] })
+            setAllIratings({ "oval": allResponses[2]['data'], "road": allResponses[3]['data'], "dirt_oval": allResponses[4]['data'], "dirt_road": allResponses[5]['data'] })
             setLoading(false)
         })
     }, [])

@@ -24,11 +24,11 @@ export default function Distribution() {
     const average = arr => Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
 
     const [data, setData] = useState([])
+    const [date, setDate] = useState('')
     const [userInput, setUserInput] = useState()
     const [loading, setLoading] = useState(true)
     const [category, setCategory] = useState('Road')
     const [statistic, setStatistic] = useState('iRating')
-    const [dateAndTime, setDateAndTime] = useState('')
     const [percentileDisplay, setPercentileDisplay] = useState({ "percentile": `--`, "rank": `--`, "betterThan": `--` });
 
     const handleUserInput = value => {
@@ -44,11 +44,11 @@ export default function Distribution() {
         fetch(`https://iracing-insights-backend.herokuapp.com/members?category=${category}&column=${statistic}`).then(
             res => res.json()
         ).then(
-            data => {
+            response => {
                 // const csv = Papa.parse(data, { header: true });
                 // const parsedData = csv?.data;
-                setDateAndTime(new Date().toLocaleString())
-                setData(data)
+                setDate(response['datetime'])
+                setData(response['data'])
                 setPercentileDisplay({ "percentile": `--`, "rank": `--`, "betterThan": `--` })
                 setLoading(false)
             }
@@ -126,7 +126,7 @@ export default function Distribution() {
                         }
                     ]}
                     layout={{
-                        title: `iRacing ${statistic} statistics for ${category} drivers on ${dateAndTime}`,
+                        title: `iRacing ${statistic} statistics for ${category} drivers on ${date}`,
                         bargap: 0.5,
                         paper_bgcolor: 'rgba(0,0,0,0)',
                         plot_bgcolor: 'rgba(0,0,0,0)',
