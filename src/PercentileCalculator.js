@@ -62,7 +62,7 @@ export default function Distribution() {
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
             <Text>Data is updated automatically approximately every hour.</Text>
-            <Text as="sub">Last updated: {date}</Text>
+            <Skeleton isLoaded={!loading}><Text as="sub">Last updated: {date}</Text></Skeleton>
             <Formik
                 initialValues={{
                     category: 'Road',
