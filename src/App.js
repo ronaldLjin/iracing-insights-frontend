@@ -7,6 +7,7 @@ import Home from './Home'
 import DriverStats from './DriverStats';
 import Leaderboard from './Leaderboard';
 import DriverSearch from './DriverSearch';
+import PageNotFound from './PageNotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/driver-stats/:clientId" exact element={<DriverStats />} />
         <Route path="/leaderboard/:category/:pageNumber" exact element={<Leaderboard />} />
         <Route path="/driver-search/:searchTerm" exact element={<DriverSearch />} />
+        <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Tag, Heading, Flex, Box, Stack, Tabs, TabList, TabPanels, Tab, TabPanel, Skeleton, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, StatGroup, } from "@chakra-ui/react";
 import Statistics from "./components/Statistics";
 import License from "./components/License";
+import PageNotFound from "./PageNotFound";
 export default function DriverStats() {
     const percentile = (arr, num) => {
         let totalPlayers = arr.length
@@ -22,7 +23,6 @@ export default function DriverStats() {
     }
 
     const params = useParams();
-
     const [data, setData] = useState([])
     const [memberProfile, setMemberProfile] = useState([])
     const [userInput, setUserInput] = useState()
@@ -64,72 +64,77 @@ export default function DriverStats() {
         "total_club_points": "Total Club points"
     }
 
-
-    return (
-        <Stack py="10vh" px="10vw" spacing="20px">
-            <Skeleton isLoaded={!loading} minW="100%" minH="100vh">
-                <Stack spacing="20px">
-                    <Heading as="h1">
-                        {memberProfile.member_info?.display_name}
-                    </Heading>
-                    <Tag w="fit-content" colorScheme="green">{memberProfile.member_info?.club_name}</Tag>
-                </Stack>
-                <Tabs>
-                    <TabList>
-                        {data.stats?.map((tab, index) => (
-                            <Tab key={index}>{tab.category}</Tab>
-                        ))}
-                    </TabList>
-                    <TabPanels>
-                        {data.stats?.map((tab, index) => {
-                            let memberInfoStats = memberProfile.member_info?.licenses.find(obj => { return obj.category_id === tab.category_id })
-                            return (
-                                <TabPanel p={"20px 0 20px 0"} key={index}>
-                                    <Flex wrap="wrap" justify="space-between" margin="-10px">
-                                        <Stack spacing="20px"  borderRadius="15px" padding="15px" margin="10px">
-                                            <StatGroup>
-                                                <Stat>
-                                                    <StatLabel>iRating</StatLabel>
-                                                    <StatNumber>{memberInfoStats?.irating}</StatNumber>
-                                                    <StatHelpText>{
-                                                        memberInfoStats?.group_name === "Rookie" ? "N/A" : percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)
-                                                    }</StatHelpText>
-                                                </Stat>
-                                                <Stat>
-                                                    <StatLabel>ttRating</StatLabel>
-                                                    <StatNumber>{memberInfoStats?.tt_rating}</StatNumber>
-                                                </Stat>
-                                            </StatGroup>
-                                            <Stack spacing="20px">
-                                                <License license={memberInfoStats?.group_name} sr={memberInfoStats?.safety_rating} />
+    if (isNaN(parseInt(params.clientId))) {
+        return (
+            <PageNotFound></PageNotFound>
+        )
+    } else {
+        return (
+            <Stack py="10vh" px="10vw" spacing="20px">
+                <Skeleton isLoaded={!loading} minW="100%" minH="100vh">
+                    <Stack spacing="20px">
+                        <Heading as="h1">
+                            {memberProfile.member_info?.display_name}
+                        </Heading>
+                        <Tag w="fit-content" colorScheme="green">{memberProfile.member_info?.club_name}</Tag>
+                    </Stack>
+                    <Tabs>
+                        <TabList>
+                            {data.stats?.map((tab, index) => (
+                                <Tab key={index}>{tab.category}</Tab>
+                            ))}
+                        </TabList>
+                        <TabPanels>
+                            {data.stats?.map((tab, index) => {
+                                let memberInfoStats = memberProfile.member_info?.licenses.find(obj => { return obj.category_id === tab.category_id })
+                                return (
+                                    <TabPanel p={"20px 0 20px 0"} key={index}>
+                                        <Flex wrap="wrap" justify="space-between" margin="-10px">
+                                            <Stack spacing="20px" borderRadius="15px" padding="15px" margin="10px">
+                                                <StatGroup>
+                                                    <Stat>
+                                                        <StatLabel>iRating</StatLabel>
+                                                        <StatNumber>{memberInfoStats?.irating}</StatNumber>
+                                                        <StatHelpText>{
+                                                            memberInfoStats?.group_name === "Rookie" ? "N/A" : percentile(allIratings[memberInfoStats?.category], memberInfoStats?.irating)
+                                                        }</StatHelpText>
+                                                    </Stat>
+                                                    <Stat>
+                                                        <StatLabel>ttRating</StatLabel>
+                                                        <StatNumber>{memberInfoStats?.tt_rating}</StatNumber>
+                                                    </Stat>
+                                                </StatGroup>
+                                                <Stack spacing="20px">
+                                                    <License license={memberInfoStats?.group_name} sr={memberInfoStats?.safety_rating} />
+                                                </Stack>
                                             </Stack>
-                                        </Stack>
 
-                                        <Flex flex="1" bg="gray.100" borderRadius="15px" padding="15px" margin="10px" flexWrap="wrap" justifyContent="flex-start">
-                                            {
-                                                Object.keys(tab).map(
-                                                    (key) => {
-                                                        if (["category", "category_id"].includes(key)) {
-                                                            return
-                                                        } else {
-                                                            return (
-                                                                <Stat padding={"20px"} className="driver-stat" flex="none">
-                                                                    <StatLabel>{labelNames[key]}</StatLabel>
-                                                                    <StatNumber>{tab[key]}</StatNumber>
-                                                                </Stat>
-                                                            )
+                                            <Flex flex="1" bg="gray.100" borderRadius="15px" padding="15px" margin="10px" flexWrap="wrap" justifyContent="flex-start">
+                                                {
+                                                    Object.keys(tab).map(
+                                                        (key) => {
+                                                            if (["category", "category_id"].includes(key)) {
+                                                                return
+                                                            } else {
+                                                                return (
+                                                                    <Stat padding={"20px"} className="driver-stat" flex="none">
+                                                                        <StatLabel>{labelNames[key]}</StatLabel>
+                                                                        <StatNumber>{tab[key]}</StatNumber>
+                                                                    </Stat>
+                                                                )
+                                                            }
                                                         }
-                                                    }
-                                                )
-                                            }
+                                                    )
+                                                }
+                                            </Flex>
                                         </Flex>
-                                    </Flex>
-                                </TabPanel>
-                            )
-                        })}
-                    </TabPanels>
-                </Tabs>
-            </Skeleton>
-        </Stack>
-    )
+                                    </TabPanel>
+                                )
+                            })}
+                        </TabPanels>
+                    </Tabs>
+                </Skeleton>
+            </Stack>
+        )
+    }
 }
