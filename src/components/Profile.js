@@ -9,6 +9,7 @@ import {
     Stack,
     Button,
     Link,
+    LinkOverlay,
     useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -19,7 +20,7 @@ export default function Profile({ name, country, club, irating, wins, className,
         '# 3': "#CD7F32"
     }
     return (
-        <Link href={`/driver-stats/${cust_id}`}>
+        <LinkOverlay href={`/driver-stats/${cust_id}`}>
             <Center >
                 <Box
                     w={'175px'}
@@ -73,6 +74,6 @@ export default function Profile({ name, country, club, irating, wins, className,
                     </Box>
                 </Box>
             </Center >
-        </Link>
+        </LinkOverlay>
     );
 }

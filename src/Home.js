@@ -1,7 +1,8 @@
-import { Box, Input, FormControl, Button, FormLabel, Select, Stack, NumberInput, NumberInputField, Flex, Heading, Text, Image, Skeleton } from "@chakra-ui/react"
+import { Box, Input, FormControl, Button, FormLabel, Select, Stack, NumberInput, NumberInputField, Flex, Heading, Text, Image, Skeleton, Link as ChakraLink} from "@chakra-ui/react"
 import { Form, Formik, Field } from "formik"
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useState, useEffect } from "react"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Profile from "./components/Profile"
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,6 +18,12 @@ export default function Home() {
     const [category, setCategory] = useState('')
     const [custId, setCustId] = useState('')
     const [driverName, setDriverName] = useState('')
+    const categoryDict = {
+        "Dirt_Oval": "Dirt Oval",
+        "Road": "Road",
+        "Oval": "Oval",
+        "Dirt_Road": "Dirt Road"
+    }
 
     useEffect(() => {
         setLoading(true)
@@ -59,6 +66,7 @@ export default function Home() {
                         </Skeleton>
                     </SwiperSlide>
                 </Swiper>
+                <ChakraLink href={`/leaderboard/${category}/1`} color="white">View full {categoryDict[category]} leaderboard <ArrowForwardIcon/></ChakraLink>
             </Box>
             <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"}>
                 <Box>
