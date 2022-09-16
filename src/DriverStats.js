@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Tag, Heading, Flex, Box, Stack, Tabs, TabList, TabPanels, Tab, TabPanel, Skeleton, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, StatGroup, } from "@chakra-ui/react";
 import Statistics from "./components/Statistics";
+import { Helmet } from "react-helmet";
 import License from "./components/License";
 import PageNotFound from "./PageNotFound";
 export default function DriverStats() {
@@ -71,6 +72,9 @@ export default function DriverStats() {
     } else {
         return (
             <Stack py="10vh" px="10vw" spacing="20px">
+                <Helmet>
+                    <title>{`iRacing Insights | ${memberProfile.member_info?.display_name}'s Stats`}</title>
+                </Helmet>
                 <Skeleton isLoaded={!loading} minW="100%" minH="100vh">
                     <Stack spacing="20px">
                         <Heading as="h1">

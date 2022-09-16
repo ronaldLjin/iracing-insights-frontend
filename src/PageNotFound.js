@@ -1,9 +1,12 @@
 import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet';
 export default function PageNotFound() {
     return (
         <Flex minH="80vh" direction="column" justify="center" alignItems="center" py="10vh" px="10vw">
+            <Helmet>
+                <title>{`iRacing Insights | Page Not Found`}</title>
+            </Helmet>
             <Box textAlign="center">
                 <Heading
                     display="inline-block"

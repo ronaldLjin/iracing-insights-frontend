@@ -24,7 +24,7 @@ export default function Profile({ name, country, club, irating, wins, className,
             <Center >
                 <Box
                     w={'175px'}
-                    bg={useColorModeValue('gray.100', 'gray.800')}
+                    bg={'white'}
                     boxShadow={'2xl'}
                     rounded={'md'}
                     overflow={'hidden'}

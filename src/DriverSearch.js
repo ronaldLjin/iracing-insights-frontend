@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Stack, Skeleton, Table, Thead, Tr, Tbody, Td, Th, Link, Heading } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
 
 export default function DriverSearch() {
     let params = useParams()
@@ -25,6 +26,9 @@ export default function DriverSearch() {
 
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
+            <Helmet>
+                <title>{`iRacing Insights | Search results for: ${params.searchTerm}`}</title>
+            </Helmet>
             <Link href="/">Go back</Link>
             <Heading size="lg">Search results for {params.searchTerm}</Heading>
             <Skeleton isLoaded={!loading}>

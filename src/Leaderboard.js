@@ -21,12 +21,19 @@ import {
     Button,
     Text
 } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
 export default function Leaderboard() {
     const params = useParams();
     const page = parseInt(params.pageNumber)
     const category = params.category
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([])
+    const categoryDict = {
+        "Dirt_Oval": "Dirt Oval",
+        "Road": "Road",
+        "Oval": "Oval",
+        "Dirt_Road": "Dirt Road"
+    }
 
     useEffect(() => {
         setLoading(true)
@@ -43,6 +50,9 @@ export default function Leaderboard() {
     console.log(data)
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
+            <Helmet>
+                <title>{`iRacing Insights | ${categoryDict[category]} Leaderboard`}</title>
+            </Helmet>
             <Select value={category} onChange={(event) => { window.location.href = `/leaderboard/${event.currentTarget.value}/1` }}>
                 <option value='Road'>Road</option>
                 <option value='Oval'>Oval</option>
@@ -50,7 +60,7 @@ export default function Leaderboard() {
                 <option value='Dirt_Oval'>Dirt Oval</option>
             </Select>
             <Skeleton isLoaded={!loading} className="overflow-scroll-gradient">
-                <Box overflow="auto" minW = "100%" minH = "100vh">
+                <Box overflow="auto" minW="100%" minH="100vh">
                     <Table variant='simple'>
                         <Thead>
                             <Tr>

@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Profile from "./components/Profile"
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Helmet } from 'react-helmet';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -41,6 +42,9 @@ export default function Home() {
 
     return (
         <Flex className="container hero-image">
+            <Helmet>
+                <title>iRacing Insights | Home</title>
+            </Helmet>
             <Box className="top-players-box" margin={"10px 0 0 10px"}>
                 {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
                 </Flex> */}

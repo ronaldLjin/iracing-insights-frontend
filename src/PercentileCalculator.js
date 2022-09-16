@@ -4,6 +4,7 @@ import { Stack, HStack, FormControl, Button, Flex, Select, Skeleton, FormLabel, 
 import { Form, Formik, Field } from "formik"
 import theme from './theme'
 import Statistics from './components/Statistics';
+import { Helmet } from 'react-helmet';
 
 export default function Distribution() {
     const percentile = (arr, num) => {
@@ -41,6 +42,13 @@ export default function Distribution() {
         'Champpoints': 'Championship Points',
         'class': 'Safety Rating',
         'Top25pcnt': 'Top 25%'
+    }
+
+    const categoryDict = {
+        "Dirt_Oval": "Dirt Oval",
+        "Road": "Road",
+        "Oval": "Oval",
+        "Dirt_Road": "Dirt Road"
     }
 
     const [data, setData] = useState([])
@@ -81,6 +89,9 @@ export default function Distribution() {
 
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
+            <Helmet>
+                <title>{`iRacing Insights | Percentile Calculator`}</title>
+            </Helmet>
             <Text>Data is updated automatically approximately every hour.</Text>
             <Skeleton isLoaded={!loading}><Text as="sub">Last updated: {date}</Text></Skeleton>
             <Formik
@@ -148,7 +159,7 @@ export default function Distribution() {
                         }
                     ]}
                     layout={{
-                        title: `iRacing ${labelNames[statistic]} statistics for ${category} drivers on ${date}`,
+                        title: `iRacing ${labelNames[statistic]} statistics for ${categoryDict[category]} drivers on ${date}`,
                         bargap: 0.5,
                         paper_bgcolor: 'rgba(0,0,0,0)',
                         plot_bgcolor: 'rgba(0,0,0,0)',
