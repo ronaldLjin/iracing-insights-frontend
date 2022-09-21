@@ -10,7 +10,7 @@ export default function Distribution() {
     const percentile = (arr, num) => {
         let totalPlayers = arr.length
         let betterThan = arr.filter((item) => item < num).length
-        let rank = totalPlayers - betterThan + 1
+        let rank = totalPlayers - betterThan
         let percentile = Math.round(betterThan / totalPlayers * 100000) / 1000
         rank = `${rank} out of ${totalPlayers}`
         return { percentile, rank, betterThan }
