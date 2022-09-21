@@ -5,7 +5,6 @@ import { Form, Formik, Field } from "formik"
 import theme from './theme'
 import Statistics from './components/Statistics';
 import { Helmet } from 'react-helmet';
-
 export default function Distribution() {
     const percentile = (arr, num) => {
         let totalPlayers = arr.length

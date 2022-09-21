@@ -33,6 +33,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import SearchBar from './SearchBar';
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -79,7 +80,6 @@ export default function NavBar() {
             <DesktopNav />
           </Flex>
         </Flex>
-
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
@@ -108,7 +108,7 @@ export default function NavBar() {
         </Stack>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse in={isOpen} style={{ overflow: 'visible' }} animateOpacity>
         <MobileNav />
       </Collapse>
     </Box>
@@ -201,10 +201,12 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: 'none' }}>
+      display={{ md: 'none' }}
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <SearchBar variant={"outline"} />
     </Stack>
   );
 };

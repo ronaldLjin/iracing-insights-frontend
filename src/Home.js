@@ -1,4 +1,4 @@
-import { Box, Input, FormControl, Button, FormLabel, Select, Stack, NumberInput, NumberInputField, Flex, Heading, Text, Image, Skeleton, Link as ChakraLink} from "@chakra-ui/react"
+import { Box, Input, FormControl, Button, FormLabel, Select, Stack, NumberInput, NumberInputField, Flex, Heading, Text, Image, Skeleton, Link as ChakraLink, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, } from "@chakra-ui/react"
 import { Form, Formik, Field } from "formik"
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useState, useEffect } from "react"
@@ -6,7 +6,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import Profile from "./components/Profile"
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useOutsideClick } from "@chakra-ui/react"
 import { Helmet } from 'react-helmet';
+import SearchBar from "./components/SearchBar"
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -18,7 +20,7 @@ export default function Home() {
     const [loading, setLoading] = useState(true)
     const [category, setCategory] = useState('')
     const [custId, setCustId] = useState('')
-    const [driverName, setDriverName] = useState('')
+
     const categoryDict = {
         "Dirt_Oval": "Dirt Oval",
         "Road": "Road",
@@ -51,8 +53,6 @@ export default function Home() {
                 <Swiper
                     // install Swiper modules
                     slidesPerView={'auto'}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
                 >
                     <SwiperSlide className="top-players-swiper">
                         <Skeleton isLoaded={!loading} className="top-player-profile">
@@ -70,39 +70,36 @@ export default function Home() {
                         </Skeleton>
                     </SwiperSlide>
                 </Swiper>
-                <ChakraLink href={`/leaderboard/${category}/1`} color="white">View full {categoryDict[category]} leaderboard <ArrowForwardIcon/></ChakraLink>
+                <ChakraLink href={`/leaderboard/${category}/1`} color="white">View full {categoryDict[category]} leaderboard <ArrowForwardIcon /></ChakraLink>
             </Box>
-            <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"}>
+            <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"} bg='white' padding={'20px'} rounded="md" boxShadow='xl'>
                 <Box>
-                    <Heading color="white">iRacing Insights</Heading>
-                    <Text fontSize="xl" color="white">1. Input a name OR customer ID, 2. Click submit</Text>
+                    <Heading>iRacing Insights</Heading>
+                    <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>
                 </Box>
                 <Formik
                     initialValues={{
-                        driver_name: "",
+                        // driver_name: "",
                         cust_id: ""
                     }
                     }
                     onSubmit={async (values) => {
                         setCustId(values.cust_id)
-                        setDriverName(values.driver_name)
+                        // setDriverName(values.driver_name)
                         if (values.cust_id !== "") {
                             window.location.href = `driver-stats/${values.cust_id}`
-                        } else if (values.driver_name !== "") {
-                            window.location.href = `driver-search/${values.driver_name}`
                         }
+                        // else if (values.driver_name !== "") {
+                        //     window.location.href = `driver-search/${values.driver_name}`
+                        // }
                     }}
                 >
                     <Form>
                         <Stack spacing={"20px"}>
+                            <SearchBar label={true}/>
                             <FormControl>
-                                <FormLabel htmlFor="driver_name" color="white">Driver Name</FormLabel>
-                                <Field id="driver_name" name="driver_name" _placeholder={{ color: 'blackAlpha.500' }} placeholder='e.x. John Doe' as={Input}>
-                                </Field>
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel htmlFor="cust_id" color="white">Customer ID</FormLabel>
-                                <Field type="number" id="cust_id" name="cust_id" _placeholder={{ color: 'blackAlpha.500' }} as={Input} placeholder='e.x. 00000'>
+                                <FormLabel htmlFor="cust_id" >Customer ID</FormLabel>
+                                <Field type="number" id="cust_id" name="cust_id" as={Input} placeholder='e.x. 00000'>
                                 </Field>
                             </FormControl>
                             <Button type='submit' colorScheme="red">
