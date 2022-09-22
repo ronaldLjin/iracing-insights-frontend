@@ -106,6 +106,11 @@ export default function NavBar() {
             Sign Up
           </Button> */}
         </Stack>
+        <Flex
+          display={{ base: 'none', md: 'block' }}
+          ml={{ base: -2 }}>
+          <SearchBar variant={"outline"} />
+        </Flex>
       </Flex>
 
       <Collapse in={isOpen} style={{ overflow: 'visible' }} animateOpacity>

@@ -43,73 +43,75 @@ export default function Home() {
     }, [])
 
     return (
-        <Flex className="container hero-image">
-            <Helmet>
-                <title>iRacing Insights | Home</title>
-            </Helmet>
-            <Box className="top-players-box" margin={"10px 0 0 10px"}>
-                {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
+        <Box>
+            <Flex className="container hero-image">
+                <Helmet>
+                    <title>iRacing Insights | Home</title>
+                </Helmet>
+                <Box className="top-players-box" margin={"10px 0 0 10px"}>
+                    {/* <Flex className="top-players" width='min-content' justifyContent='center' marginTop="20px">
                 </Flex> */}
-                <Swiper
-                    // install Swiper modules
-                    slidesPerView={'auto'}
-                >
-                    <SwiperSlide className="top-players-swiper">
-                        <Skeleton isLoaded={!loading} className="top-player-profile">
-                            <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} rank="# 1" />
-                        </Skeleton >
-                    </SwiperSlide>
-                    <SwiperSlide className="top-players-swiper">
-                        <Skeleton isLoaded={!loading} className="top-player-profile">
-                            <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} rank="# 2" />
-                        </Skeleton>
-                    </SwiperSlide>
-                    <SwiperSlide className="top-players-swiper">
-                        <Skeleton isLoaded={!loading} className="top-player-profile">
-                            <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} rank="# 3" />
-                        </Skeleton>
-                    </SwiperSlide>
-                </Swiper>
-                <ChakraLink href={`/leaderboard/${category}/1`} color="white">View full {categoryDict[category]} leaderboard <ArrowForwardIcon /></ChakraLink>
-            </Box>
-            <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"} bg='white' padding={'20px'} rounded="md" boxShadow='xl'>
-                <Box>
-                    <Heading>iRacing Insights</Heading>
-                    <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>
+                    <Swiper
+                        // install Swiper modules
+                        slidesPerView={'auto'}
+                    >
+                        <SwiperSlide className="top-players-swiper">
+                            <Skeleton isLoaded={!loading} className="top-player-profile">
+                                <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} rank="# 1" />
+                            </Skeleton >
+                        </SwiperSlide>
+                        <SwiperSlide className="top-players-swiper">
+                            <Skeleton isLoaded={!loading} className="top-player-profile">
+                                <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} rank="# 2" />
+                            </Skeleton>
+                        </SwiperSlide>
+                        <SwiperSlide className="top-players-swiper">
+                            <Skeleton isLoaded={!loading} className="top-player-profile">
+                                <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} rank="# 3" />
+                            </Skeleton>
+                        </SwiperSlide>
+                    </Swiper>
+                    <ChakraLink href={`/leaderboard/${category}/1`} color="white">View full {categoryDict[category]} leaderboard <ArrowForwardIcon /></ChakraLink>
                 </Box>
-                <Formik
-                    initialValues={{
-                        // driver_name: "",
-                        cust_id: ""
-                    }
-                    }
-                    onSubmit={async (values) => {
-                        setCustId(values.cust_id)
-                        // setDriverName(values.driver_name)
-                        if (values.cust_id !== "") {
-                            window.location.href = `driver-stats/${values.cust_id}`
+                <Stack className="player-search-form" spacing={"20px"} margin={"10px 0 0 10px"} bg='white' padding={'20px'} rounded="md" boxShadow='xl'>
+                    <Box>
+                        <Heading>iRacing Insights</Heading>
+                        <Text fontSize="xl">1. Input a name OR customer ID, 2. Click submit</Text>
+                    </Box>
+                    <Formik
+                        initialValues={{
+                            // driver_name: "",
+                            cust_id: ""
                         }
-                        // else if (values.driver_name !== "") {
-                        //     window.location.href = `driver-search/${values.driver_name}`
-                        // }
-                    }}
-                >
-                    <Form>
-                        <Stack spacing={"20px"}>
-                            <SearchBar label={true}/>
-                            <FormControl>
-                                <FormLabel htmlFor="cust_id" >Customer ID</FormLabel>
-                                <Field type="number" id="cust_id" name="cust_id" as={Input} placeholder='e.x. 00000'>
-                                </Field>
-                            </FormControl>
-                            <Button type='submit' colorScheme="red">
-                                Submit
-                            </Button>
-                        </Stack>
-                    </Form>
-                </Formik >
-            </Stack>
+                        }
+                        onSubmit={async (values) => {
+                            setCustId(values.cust_id)
+                            // setDriverName(values.driver_name)
+                            if (values.cust_id !== "") {
+                                window.location.href = `driver-stats/${values.cust_id}`
+                            }
+                            // else if (values.driver_name !== "") {
+                            //     window.location.href = `driver-search/${values.driver_name}`
+                            // }
+                        }}
+                    >
+                        <Form>
+                            <Stack spacing={"20px"}>
+                                <SearchBar label={true} />
+                                <FormControl>
+                                    <FormLabel htmlFor="cust_id" >Customer ID</FormLabel>
+                                    <Field type="number" id="cust_id" name="cust_id" as={Input} placeholder='e.x. 00000'>
+                                    </Field>
+                                </FormControl>
+                                <Button type='submit' colorScheme="red">
+                                    Submit
+                                </Button>
+                            </Stack>
+                        </Form>
+                    </Formik >
+                </Stack>
 
-        </Flex>
+            </Flex>
+        </Box>
     )
 }
