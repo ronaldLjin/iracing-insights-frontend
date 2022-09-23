@@ -22,6 +22,9 @@ import {
     Text
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
+import Paragon from "./assets/Paragon";
+import RankTwo from "./assets/RankTwo";
+import RankThree from "./assets/RankThree";
 export default function Leaderboard() {
     const params = useParams();
     const page = parseInt(params.pageNumber)
@@ -84,9 +87,23 @@ export default function Leaderboard() {
                                             <Tr>
                                                 {Object.keys(driver).map(function (key) {
                                                     if (key === "RANK") {
-                                                        return (
-                                                            <Td>{driver[key] + 1}</Td>
-                                                        )
+                                                        if (driver[key] === 0) {
+                                                            return (
+                                                                <Td><Paragon w="30px"/></Td>
+                                                            )
+                                                        } else if (driver[key] === 1) {
+                                                            return (
+                                                                <Td><RankTwo w="30px"/></Td>
+                                                            )
+                                                        } else if (driver[key] === 2) {
+                                                            return (
+                                                                <Td><RankThree w="30px"/></Td>
+                                                            )
+                                                        } else {
+                                                            return (
+                                                                <Td>{driver[key] + 1}</Td>
+                                                            )
+                                                        }
                                                     } else if (key === "DRIVER") {
                                                         return (
                                                             <Td><Link target="_blank" href={`/driver-stats/${driver["CUSTID"]}`}>{driver[key]}</Link></Td>
