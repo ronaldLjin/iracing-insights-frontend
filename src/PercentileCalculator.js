@@ -57,6 +57,7 @@ export default function Distribution() {
     const [category, setCategory] = useState('Road')
     const [statistic, setStatistic] = useState('iRating')
     const [percentileDisplay, setPercentileDisplay] = useState({ "percentile": `--`, "rank": `--`, "betterThan": `--` });
+    let dateUpdated
 
     const handleUserInput = value => {
         if (value === '') {
@@ -72,10 +73,9 @@ export default function Distribution() {
             res => res.json()
         ).then(
             response => {
-                // const csv = Papa.parse(data, { header: true });
-                // const parsedData = csv?.data;
-                setDate(response['datetime'])
                 setData(response['data'])
+                dateUpdated = new Date(response['datetime'])
+                setDate(dateUpdated.toString())
                 setPercentileDisplay({ "percentile": `--`, "rank": `--`, "betterThan": `--` })
                 setLoading(false)
             }
