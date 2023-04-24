@@ -34,7 +34,7 @@ export default function Profile({ name, country, club, irating, wins, className,
                         h={'120px'}
                         w={'full'}
                         src={
-                            `https://countryflagsapi.com/svg/${country}`
+                            `https://flagcdn.com/${country}.svg`
                         }
                         objectFit={'cover'}
                     />

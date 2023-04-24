@@ -49,7 +49,6 @@ export default function Leaderboard() {
             }
         )
     }, [])
-
     console.log(data)
     return (
         <Stack py="10vh" px="10vw" spacing="20px">
@@ -82,8 +81,7 @@ export default function Leaderboard() {
                             {
                                 data.drivers?.map(
                                     (driver) => {
-
-                                        return (
+                                        return (    
                                             <Tr>
                                                 {Object.keys(driver).map(function (key) {
                                                     if (key === "RANK") {
@@ -109,9 +107,10 @@ export default function Leaderboard() {
                                                             <Td><Link target="_blank" href={`/driver-stats/${driver["CUSTID"]}`}>{driver[key]}</Link></Td>
                                                         )
                                                     } else if (key === "LOCATION") {
+                                                        let country = driver[key].toLowerCase()
                                                         return (
                                                             <Td>
-                                                                <Image src={`https://countryflagsapi.com/svg/${driver[key]}`} w="30px" />
+                                                                <Image src={`https://flagcdn.com/${country}.svg`} w="30px" />
                                                             </Td>
                                                         )
                                                     } else if (key === "CLASS") {

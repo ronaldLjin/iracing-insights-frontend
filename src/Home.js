@@ -57,17 +57,17 @@ export default function Home() {
                     >
                         <SwiperSlide className="top-players-swiper">
                             <Skeleton isLoaded={!loading} className="top-player-profile">
-                                <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} rank="# 1" />
+                                <Profile name={topPlayers[0]?.DRIVER} country={topPlayers[0]?.LOCATION.toLowerCase()} club={topPlayers[0]?.CLUB_NAME} irating={topPlayers[0]?.IRATING} wins={topPlayers[0]?.WINS} cust_id={topPlayers[0]?.CUSTID} rank="# 1" />
                             </Skeleton >
                         </SwiperSlide>
                         <SwiperSlide className="top-players-swiper">
                             <Skeleton isLoaded={!loading} className="top-player-profile">
-                                <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} rank="# 2" />
+                                <Profile name={topPlayers[1]?.DRIVER} country={topPlayers[1]?.LOCATION.toLowerCase()} club={topPlayers[1]?.CLUB_NAME} irating={topPlayers[1]?.IRATING} wins={topPlayers[1]?.WINS} cust_id={topPlayers[1]?.CUSTID} rank="# 2" />
                             </Skeleton>
                         </SwiperSlide>
                         <SwiperSlide className="top-players-swiper">
                             <Skeleton isLoaded={!loading} className="top-player-profile">
-                                <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} rank="# 3" />
+                                <Profile name={topPlayers[2]?.DRIVER} country={topPlayers[2]?.LOCATION.toLowerCase()} club={topPlayers[2]?.CLUB_NAME} irating={topPlayers[2]?.IRATING} wins={topPlayers[2]?.WINS} cust_id={topPlayers[2]?.CUSTID} rank="# 3" />
                             </Skeleton>
                         </SwiperSlide>
                     </Swiper>
