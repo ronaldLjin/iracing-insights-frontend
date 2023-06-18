@@ -44,11 +44,11 @@ export default function NavBar() {
 
   return (
     <Box>
-      {/* <Alert status='error' px="10vw">
+      <Alert status='error' px="10vw">
         <AlertIcon />
         <AlertTitle>iRacing Insights is not in service!</AlertTitle>
         <AlertDescription>servers are currently down, please come back later.</AlertDescription>
-      </Alert> */}
+      </Alert>
       <Flex
         bg={useColorModeValue('white', 'gray.900')}
         color={useColorModeValue('gray.800', 'white')}
